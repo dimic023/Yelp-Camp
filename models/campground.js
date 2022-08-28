@@ -8,7 +8,15 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual("thumbnail").get(function () {
-  return this.url.replace("/upload", "/upload/w_200");
+  return this.url.replace("/upload", "/upload/w_200,h_200,c_fill");
+});
+
+ImageSchema.virtual("imageIndex").get(function () {
+  return this.url.replace("/upload", "/upload/w_400,h_190,c_fill");
+});
+
+ImageSchema.virtual("imageShow").get(function () {
+  return this.url.replace("/upload", "/upload/w_500,h_500,c_fill");
 });
 
 const opts = { toJSON: { virtuals: true } };
